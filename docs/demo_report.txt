@@ -1,0 +1,56 @@
+PROPERTY UNDERWRITING INTELLIGENCE
+Seven-engine synthetic demonstration | zero live calls
+All facts, reviews, quotes and comparables are fictional. No real property is verified.
+
+ENGINE / READINESS
+1. PROPERTY_DATA      PARTIAL
+2. CONDITION          PARTIAL
+3. REHAB              PARTIAL
+4. VALUATION          READY
+5. RENT_HCV           PARTIAL
+6. FINANCIALS         INSUFFICIENT
+7. DECISION           DUE_DILIGENCE_REQUIRED
+
+Synthetic ARV: 159965 | accepted sales: 3
+Synthetic market rent/month: 1250
+Priced rehab subset only: 2000.0
+Unpriced work and hidden systems remain unknown; the subset is not a complete budget.
+HCV approved contract rent: None
+HCV payment standards are reference values, never guaranteed revenue.
+
+SEPARATE SYNTHETIC FINANCIAL SCENARIO (does not clear blockers)
+Financial profile: SCENARIO_ONLY; sources and uses: BALANCED
+TOTAL_PROJECT_COST: 116,000.00 [SCENARIO_ONLY]
+NET_OPERATING_INCOME: 8,207.50 [SCENARIO_ONLY]
+DSCR: 1.22 [SCENARIO_ONLY]
+MONTHLY_CASH_FLOW: 124.59 [SCENARIO_ONLY]
+
+READINESS BLOCKERS (14)
+- REGULATORY_REVIEW_REQUIRED: Verify current zoning/legal use and current city case coverage; published history is not clearance.
+- HAZARD_REVIEW_REQUIRED: Resolve the upstream hazard-screening gap.
+- PHYSICAL_INSPECTION_REQUIRED: Inspect unresolved components and current habitability; photos are not system tests.
+- MAJOR_HIDDEN_EXPOSURE: Resolve hidden-condition exposure before final rehabilitation underwriting.
+- COMPREHENSIVE_REHAB_UNAVAILABLE: Obtain an inspected comprehensive scope and non-overlapping cost/allowance coverage; visible subtotal is not total rehab.
+- ELIGIBLE_RENT_UNAVAILABLE: Obtain supported achieved/market rent and applicable collection assumptions; payment standard is not revenue.
+- UTILITIES_UNRESOLVED: Establish utility responsibility, fuels and applicable allowance, then owner expenses.
+- HCV_APPROVAL_ABSENT: For the retained HCV path obtain actual PHA contract-rent approval; reference standard is insufficient.
+- HCV_REASONABLENESS_UNRESOLVED: PHA rent-reasonableness remains separate from an estimated market rent.
+- HCV_INSPECTION_UNRESOLVED: Obtain actual PHA inspection approval at the appropriate rental-ready stage; do not schedule prematurely.
+- OPERATING_EXPENSES_INCOMPLETE: Obtain supported annual operating expenses and explicit utility treatment.
+- FINANCING_ABSENT_OR_INCOMPLETE: Obtain financing terms or explicit supported all-cash/no-seller-debt inputs.
+- ACQUISITION_TERMS_UNAVAILABLE: Obtain accepted purchase and complete closing/funding terms.
+- FINANCIAL_EVIDENCE_INCOMPLETE: Refresh Engine 6 after its missing material inputs are accepted.
+
+NEXT ACTIONS
+1. Complete physical inspection of unresolved systems, components and habitability. [depends on: none]
+2. Verify current legal use, city case coverage and any missing official facts/hazard evidence. [depends on: none]
+3. Obtain comprehensive contractor scope, costs and inspection allowances; refresh Engine 3. [depends on: inspect_property, verify_official_data]
+4. Obtain purchase, closing and funding terms. [depends on: none]
+5. Obtain current eligible rental evidence and initiate the applicable HCV evidence path; refresh Engine 5. [depends on: complete_rehab]
+6. Resolve utilities/allowance applicability and obtain supported annual operating expenses. [depends on: none]
+7. Obtain PHA reasonableness, inspection and actual contract-rent approval at the appropriate program stage. [depends on: obtain_rent, resolve_utilities_opex, complete_rehab]
+8. Obtain applicable debt terms/proceeds or documented all-cash funding; reconcile sources and uses. [depends on: complete_rehab, obtain_acquisition, obtain_rent, resolve_utilities_opex]
+9. Refresh real-evidence Engine 6 after accepting the required evidence; do not substitute scenario economics. [depends on: inspect_property, verify_official_data, complete_rehab, obtain_acquisition, obtain_rent, resolve_utilities_opex, complete_hcv_approvals, obtain_financing]
+10. Re-run Engine 7 with the new consistent accepted handoffs. [depends on: refresh_engine6]
+
+Acquisition recommendation: DISABLED. Readiness is not investment merit.

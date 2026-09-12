@@ -1,0 +1,439 @@
+{
+  "contract_version": "engine6-scenario-input-0.1.0",
+  "property_id": "DEMO_PROPERTY_001",
+  "mode": "SCENARIO_MODE",
+  "scenario_name": "Public Portfolio Base Case",
+  "operator_confirmed": true,
+  "rent_assumption_warning": "NOT PHA-APPROVED CONTRACT RENT",
+  "categories": {
+    "acquisition": {
+      "purchase_price": {
+        "value": 65000,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional acquisition price for demonstration only.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "closing_costs": {
+        "value": 2500,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional closing-cost assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "initial_reserves": {
+        "value": 2000,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional initial reserve funding.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "other_initial_costs": {
+        "value": 0,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Explicit synthetic zero assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      }
+    },
+    "rehab": {
+      "initial_rehab": {
+        "value": 35000,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional complete rehab base assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "contingency": {
+        "value": 5000,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional incremental rehab contingency.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "inspection_dependent_allowance": {
+        "value": 5000,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional allowance for inspection-dependent work.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      }
+    },
+    "revenue": {
+      "monthly_scenario_rent": {
+        "value": 1250,
+        "unit": "USD_MONTH",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Independent fictional rent assumption; not HCV-approved rent.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "rent_assumption_basis": {
+        "value": "OPERATOR_ASSUMPTION",
+        "unit": "TEXT",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Explicit synthetic operator assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "other_income": {
+        "value": 0,
+        "unit": "USD_YEAR",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Explicit synthetic zero assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "vacancy_rate": {
+        "value": 0.05,
+        "unit": "FRACTION",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional five-percent vacancy assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "credit_loss_rate": {
+        "value": 0.01,
+        "unit": "FRACTION",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional one-percent credit-loss assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "stabilized_operations": {
+        "value": true,
+        "unit": "BOOLEAN",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Synthetic scenario assumes stabilized operations.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      }
+    },
+    "operating_expenses": {
+      "property_taxes": {
+        "value": 1200,
+        "unit": "USD_YEAR",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional annual property-tax assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "insurance": {
+        "value": 1400,
+        "unit": "USD_YEAR",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional annual insurance assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "management_fee": {
+        "value": 1200,
+        "unit": "USD_YEAR",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional annual management expense.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "maintenance": {
+        "value": 1200,
+        "unit": "USD_YEAR",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional annual maintenance expense.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "capex_reserve": {
+        "value": 900,
+        "unit": "USD_YEAR",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional annual capital-expenditure reserve.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "utilities_owner_paid": {
+        "value": 600,
+        "unit": "USD_YEAR",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional annual owner-paid utilities.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "HOA": {
+        "value": 0,
+        "unit": "USD_YEAR",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Explicit synthetic zero HOA assumption.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "other_opex": {
+        "value": 300,
+        "unit": "USD_YEAR",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional additional annual operating expenses.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      }
+    },
+    "financing": {
+      "loan_amount": {
+        "value": 80000,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional senior loan principal.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "debt_proceeds": {
+        "value": 80000,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional funded senior debt proceeds.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "interest_rate": {
+        "value": 0.075,
+        "unit": "FRACTION",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional 7.5-percent fixed nominal rate.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "term_years": {
+        "value": 5,
+        "unit": "YEARS",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional five-year maturity.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "amortization_years": {
+        "value": 30,
+        "unit": "YEARS",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional thirty-year amortization.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "interest_only_months": {
+        "value": 0,
+        "unit": "MONTHS",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "No interest-only period in the synthetic scenario.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "points": {
+        "value": 0.01,
+        "unit": "FRACTION",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional one-percent origination points.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "loan_fees": {
+        "value": 700,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional additional finance fees.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "seller_financing": {
+        "value": 0,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Explicit synthetic assumption of no seller financing.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "other_capital": {
+        "value": 0,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Explicit synthetic assumption of no other capital.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      },
+      "equity_contribution": {
+        "value": 36000,
+        "unit": "USD",
+        "evidence_class": "SCENARIO_ONLY",
+        "source": {
+          "kind": "SYNTHETIC_DEMO",
+          "label": "Public portfolio demonstration"
+        },
+        "effective_date": null,
+        "notes": "Fictional aggregate equity contribution balancing sources and uses.",
+        "accepted": true,
+        "coverage": "COMPLETE"
+      }
+    },
+    "refinance": {},
+    "sale_exit": {}
+  },
+  "stress_overrides": null
+}

@@ -1,0 +1,69 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables / secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Private / generated project data
+artifacts/
+sources/
+benchmarks/
+tmp/
+private/
+data/
+
+
+# Node
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# Python packaging output
+build/
+dist/
+*.egg-info/
+
+# Additional credentials and local secrets
+secrets/
+credentials/
+credentials*.json
+*.p12
+*.pfx
+
+
+# Test coverage, logs, and temporary output
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+*.log
+*.tmp
+*.bak
+
+# Local reports and private exports
+reports/
+exports/
