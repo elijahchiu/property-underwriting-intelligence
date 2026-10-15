@@ -1,0 +1,18 @@
+PROPERTY UNDERWRITING INTELLIGENCE — SYNTHETIC TIMING SENSITIVITY
+========================================================================
+Fictional assumptions only. This is deterministic scenario arithmetic, not a forecast.
+
+Measure                                      4-week construction  6-week construction
+Repair months (rounded up)                                   1                   2
+Lease-up months                                              1                   1
+Pre-stabilization no-rent months                             2                   3
+Stabilized annual cash flow                          $1,495.04           $1,495.04
+Annualized stabilized cash-on-cash                       4.07%               4.04%
+First-year operating cash flow                      $-1,556.21          $-3,081.84
+Additional pre-stabilization uses                      $700.00           $1,050.00
+Total project uses                                 $116,700.00         $117,050.00
+
+Cash-on-cash is an annualized stabilized measure; it is not first-year cash return.
+First-year operating cash flow subtracts lost effective rent during repair/lease-up and the explicit carry assumption.
+Initial purchase and rehab uses are excluded from first-year operating cash flow and included in invested cash.
+The saved-description conflict state is not part of this synthetic example.

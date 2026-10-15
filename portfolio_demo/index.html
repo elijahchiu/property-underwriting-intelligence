@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#eff5f8">
+  <title>Property Intelligence · Portfolio Demo</title>
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+  <div class="app-frame">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" data-view="overview" aria-label="Property Intelligence home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M5 19 20 7l15 12M10 17v16h20V17M16 33V22h8v11"/><path d="M4 36h32"/></svg></span>
+        <span><strong>PROPERTY</strong><small>INTELLIGENCE LAB</small></span>
+      </a>
+      <div class="demo-chip"><span class="pulse"></span> FICTIONAL DATA DEMO</div>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <p class="nav-label">RESEARCH</p>
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span><span>Overview</span></button>
+        <button class="nav-item" data-view="markets"><span class="nav-icon">⌖</span><span>Markets</span></button>
+        <button class="nav-item" data-view="properties"><span class="nav-icon">⌂</span><span>Properties</span><span class="nav-count" id="propertyCount">5</span></button>
+        <p class="nav-label nav-label-gap">ANALYSIS</p>
+        <button class="nav-item" data-view="property"><span class="nav-icon">▦</span><span>Property workspace</span></button>
+        <button class="nav-item" data-view="scope"><span class="nav-icon">⌁</span><span>Renovation scope</span></button>
+        <button class="nav-item" data-view="financials"><span class="nav-icon">▤</span><span>Financials</span></button>
+        <button class="nav-item" data-view="scenarios"><span class="nav-icon">⇄</span><span>Scenarios</span></button>
+        <p class="nav-label nav-label-gap">DELIVER</p>
+        <button class="nav-item" data-view="report"><span class="nav-icon">▧</span><span>Acquisition report</span></button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="user-dot">PI</div>
+        <div><strong>Demo workspace</strong><small>Local session · no account</small></div>
+        <span class="online-dot" title="Local demo"></span>
+      </div>
+    </aside>
+    <div class="mobile-scrim" id="mobileScrim"></div>
+    <section class="main-column">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+        <div class="breadcrumb"><span>Portfolio edition</span><span class="crumb-slash">/</span><strong id="currentSection">Overview</strong></div>
+        <div class="topbar-right"><span class="mode-pill"><i></i> Offline demo</span><span class="topbar-divider"></span><span class="user-avatar">D</span></div>
+      </header>
+      <div class="notice-bar"><span class="notice-icon">i</span><span><strong>Simulation only.</strong> All property, market, comparable, and renovation records are fictional. No live sources, APIs, credentials, or company data are used.</span><button id="dismissNotice" aria-label="Dismiss notice">×</button></div>
+      <main id="main" tabindex="-1" aria-live="polite"></main>
+      <footer class="page-footer"><span>Property Intelligence Lab</span><span>Portfolio simulation · <span id="footerProjectCount">6</span> fictional scope examples</span></footer>
+    </section>
+  </div>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>

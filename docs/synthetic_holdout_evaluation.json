@@ -1,0 +1,71 @@
+{
+  "label": "SYNTHETIC DEMONSTRATION ONLY \u2014 not Roof4All validation or real project performance",
+  "method": "Leave one fictional scope project out; estimate its recorded categories from all other projects with the demo similarity-weighted mean. Area-priced categories are scaled to the held-out project's own area. Basement-finish costs are excluded because the source fixtures provide no basement-area quantities.",
+  "excluded_categories": {
+    "basement_finish": "No basement-area quantity is present in these synthetic scope records."
+  },
+  "project_count": 6,
+  "aggregate": {
+    "component_observations": 53,
+    "component_cost_mae": 911.66,
+    "tracked_component_sum_mae": 6116.17,
+    "tracked_component_sum_median_absolute_error": 4192.0,
+    "tracked_component_sum_mape": 0.15
+  },
+  "properties": [
+    {
+      "held_out_project": "SIM-SCOPE-01",
+      "training_projects": 5,
+      "components_compared": 9,
+      "actual_tracked_component_sum": 30832,
+      "predicted_tracked_component_sum": 36944,
+      "absolute_component_sum_error": 6112,
+      "component_sum_absolute_percentage_error": 0.1982
+    },
+    {
+      "held_out_project": "SIM-SCOPE-02",
+      "training_projects": 5,
+      "components_compared": 9,
+      "actual_tracked_component_sum": 35337,
+      "predicted_tracked_component_sum": 35986,
+      "absolute_component_sum_error": 649,
+      "component_sum_absolute_percentage_error": 0.0184
+    },
+    {
+      "held_out_project": "SIM-SCOPE-03",
+      "training_projects": 5,
+      "components_compared": 9,
+      "actual_tracked_component_sum": 28730,
+      "predicted_tracked_component_sum": 37247,
+      "absolute_component_sum_error": 8517,
+      "component_sum_absolute_percentage_error": 0.2964
+    },
+    {
+      "held_out_project": "SIM-SCOPE-04",
+      "training_projects": 5,
+      "components_compared": 8,
+      "actual_tracked_component_sum": 37910,
+      "predicted_tracked_component_sum": 40182,
+      "absolute_component_sum_error": 2272,
+      "component_sum_absolute_percentage_error": 0.0599
+    },
+    {
+      "held_out_project": "SIM-SCOPE-05",
+      "training_projects": 5,
+      "components_compared": 9,
+      "actual_tracked_component_sum": 42691,
+      "predicted_tracked_component_sum": 42637,
+      "absolute_component_sum_error": 54,
+      "component_sum_absolute_percentage_error": 0.0013
+    },
+    {
+      "held_out_project": "SIM-SCOPE-06",
+      "training_projects": 5,
+      "components_compared": 9,
+      "actual_tracked_component_sum": 58043,
+      "predicted_tracked_component_sum": 38950,
+      "absolute_component_sum_error": 19093,
+      "component_sum_absolute_percentage_error": 0.3289
+    }
+  ]
+}

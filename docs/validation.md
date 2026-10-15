@@ -37,6 +37,29 @@ typing_extensions==4.16.0
 
 These are the versions actually tested, not a promise that all future compatible dependency releases produce identical behavior. Runtime requirements remain declared in `pyproject.toml`.
 
+## Local portfolio edition validation (2026-10-15)
+
+The final candidate was installed as a built, non-editable wheel in a newly created Python 3.12 virtual environment. The environment used the desktop's preinstalled dependency set (`setuptools 84.0.0`, `pydantic 2.13.5`) through shared site packages; no package-index access was needed. The app and core pipeline imports resolved to that environment's `site-packages`, not the checkout. The interactive app was launched from the installed package in a separate directory and opened in a browser on loopback.
+
+- Final package build/install: succeeded as `property-underwriting-intelligence 0.2.0`; installed wheel SHA-256 `1e92cb71a79c5ff1f4cbb37975fba839ba1616cf136f2d2a4e4deb89a014bba5`.
+- Dependency check: `No broken requirements found.`
+- Full test suite after the final evidence-label change: **55 tests passed**. New tests cover synthetic data preparation, unknown market and conflicting-ID rejection, project-use reconciliation, and six property-level holdouts.
+- Installed website runtime: started from the installed wheel outside the source checkout; market/property selection, evidence review, scope generation, financial calculation, timing comparison, and acquisition-report preview completed in the browser.
+- Installed CLI: populated output matches `docs/demo_report.txt` byte-for-byte; insufficient-evidence case runs; identity-conflict JSON parses.
+- Installed financial and timing examples: both exit successfully.
+- Browser workflow: verified market selection, property workspace, scope edit, financial recalculation, timing comparison, and acquisition-report preview. No browser console errors were observed.
+- Current local website screenshots show the overview and financial assumptions/results. The financial page itemizes `$153,303` into `$118,000` acquisition, `$30,763` synthetic rehab scope, `$3,540` closing costs, and `$1,000` initial reserves. The refreshed report shows the same traceable component table and labels its counts as synthetic analogs.
+- Synthetic-model method demo: six leave-one-project-out predictions, 53 tracked component comparisons, $911.66 component-cost MAE, and 15.00% mean absolute percentage error for tracked-component sums. This is fictional, very small-sample method evidence only, not Roof4All or real-world performance. Basement-finish category was excluded from evaluation because synthetic area quantities are missing.
+- Responsive/keyboard spot checks: at 390 × 844 there was no horizontal overflow and the navigation drawer opened; keyboard focus reached the home link. This is a spot check, not a complete accessibility audit.
+- PDF: refreshed and visually checked as a clean two-page letter sample. The scope table labels its count “Synthetic analogs,” the complete $153,303 uses table reconciles on page two, and browser date/address headers are omitted.
+- Network boundary: no live property data, RentCast, or other metered provider calls. The application itself is offline-only. Package build and installation used locally available build tooling and dependencies.
+
+The portfolio website uses only fictional examples. Its similarity-weighted scope estimator and financial/timing calculations demonstrate software behavior; they do not measure out-of-sample property value, rent, or renovation-cost prediction accuracy and do not use Roof4All's private historical contractor dataset.
+
+The separate construction-timing example compares four and six weeks under explicit fictional no-rent and carry assumptions. Its six-week case rounds to two repair-carry months. The stabilized annual cash flow remains $1,495.04 in both cases, while first-year operating cash flow changes from -$1,556.21 to -$3,081.84. Additional project uses rise by $350.00. See [the exact sample output and formulas](timing_sensitivity_report.txt).
+
+The candidate remains local and unpublished pending the user's review and approval to push. The user confirms company permission for the portfolio publication version. The remote branch head could not be checked from this environment because GitHub DNS was unavailable; see [the local release checklist](release_readiness.md).
+
 ## Reproduce
 
 ```bash
@@ -49,6 +72,7 @@ underwrite-demo
 underwrite-demo --case insufficient
 underwrite-demo --case identity-conflict --json
 python examples/run_financial_demo.py
+python examples/run_timing_sensitivity.py
 ```
 
 No property data service is contacted by any demo. The regression suite also runs the integrated calculation with socket creation disabled.

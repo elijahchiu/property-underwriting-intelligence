@@ -47,7 +47,7 @@ def main():
         f"{metrics['DSCR']['value']:.2f}x"
     )
     print(
-        f"Cash-on-Cash Return: "
+        f"Annualized Stabilized Cash-on-Cash: "
         f"{metrics['CASH_ON_CASH_RETURN']['value'] * 100:.2f}%"
     )
     print(
@@ -65,6 +65,8 @@ def main():
 
     print("\nFinancial Profile:", result["FINANCIAL_PROFILE_STATUS"])
     print("Sources & Uses:", result["sources_and_uses"]["status"])
+    print("\nCash-on-cash uses annualized stabilized operations. For explicit repair/lease-up timing and first-year cash flow, run:")
+    print("python examples/run_timing_sensitivity.py")
 
 
 if __name__ == "__main__":

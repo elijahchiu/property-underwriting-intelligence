@@ -1,0 +1,16 @@
+{
+  "description": "Fully synthetic construction-timing sensitivity; no real property or Roof4All historical cost is represented.",
+  "financial_scenario": "demo_financial_scenario.json",
+  "lease_up_months": 1,
+  "monthly_nonoverlapping_pre_stabilization_carry_cost": 350,
+  "timeline_cases": [
+    {
+      "label": "4-week construction",
+      "construction_weeks": 4
+    },
+    {
+      "label": "6-week construction",
+      "construction_weeks": 6
+    }
+  ]
+}

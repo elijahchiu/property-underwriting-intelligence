@@ -1,51 +1,118 @@
 # Property Underwriting Intelligence
 
-**Seven underwriting engines. Traceable evidence. Explicit abstention.**
+**An interactive property-research portfolio demo, with a reproducible Python underwriting pipeline.**
 
-An offline, evidence-aware property underwriting portfolio project that carries structured property facts through condition review, rehab scope, comparable sales, rental/HCV evidence, financial analysis, and decision readiness. It calculates what the inputs support and explains what is still missing.
+Real-estate screening combines incomplete property facts, renovation needs, comparable sales, rent assumptions, and financing terms. This project demonstrates one way to keep those inputs traceable, compare scenarios, and make unsupported conclusions visible.
 
-The public edition runs real reusable engine logic against **entirely fictional fixtures**. It is a reproducible engineering demonstration, not a nationwide address lookup service, an appraisal, or an autonomous acquisition product.
+The public edition now has two connected demonstrations:
 
-```text
-Property / data trust → Condition → Rehab scope
-          │                │            │
-          └────────────────┴────────────┤
-                                       ↓
-                              ARV / comparable sales
-                                       ↓
-                               Market rent / HCV
-                                       ↓
-                            Evidence-based financials
-                                       ↓
-                               Decision readiness
+- A local website for fictional market research, sample-property discovery, comp review, editable renovation scopes, financial scenarios, construction-timing comparison, and a print-ready acquisition report.
+- A Python seven-engine pipeline showing structured evidence handling, scope coverage, sales/rental analysis, financial calculations, and decision readiness.
 
-Synthetic financial assumptions → separate scenario overlay
-                                  (never clears evidence blockers)
+Everything in the public demo is simulated. It is not the private Roof4All application, a live address lookup service, an appraisal, or an investment recommendation.
+
+## Try the website
+
+Requires Python 3.11 or newer. The interactive portfolio app uses only the Python standard library and makes no external requests.
+
+```bash
+python3 -m portfolio_demo.server --port 8790
 ```
 
-## Run the seven-engine demo
+Open [http://127.0.0.1:8790](http://127.0.0.1:8790). Stop it with `Ctrl-C`.
 
-Requires Python 3.11 or newer. Installation downloads Pydantic and its dependencies; running the demos needs **no credentials, network, database, private files, or property photos**.
+The demo flow is:
+
+1. Compare fictional markets and browse fictional listings.
+2. Open a property workspace with made-up facts, comparable sales, and asking-rent examples.
+3. Generate a preliminary itemized scope, inspect its synthetic analog counts, and edit budget amounts.
+4. Change financing and operating assumptions to recalculate NOI, DSCR, monthly cash flow, and cash-on-cash.
+5. Compare four- and six-week construction scenarios, then print the report or save it as PDF from the browser.
+
+The interface was authored for this public demo. It uses a familiar research-to-underwriting workflow without private logos, images, company policy, or internal application code.
+
+![Property research dashboard with fictional neighborhood comparisons and sample listings](docs/portfolio_overview.png)
+
+![Editable financial assumptions, modeled outcomes, and reconciled project uses](docs/portfolio_financials.png)
+
+[Open the two-page sample acquisition report (fictional data)](docs/portfolio_report_sample.pdf)
+
+## What the analytical example demonstrates
+
+### Renovation estimate from case-based analogs
+
+The website's independent Python estimator uses **six fictional project records**. It ranks examples using explicit feature weights—market 30%, property type 15%, construction era 15%, living area 25%, and basement 15%—then estimates each selected work package with a similarity-weighted mean. Flooring, paint, and basement-finish packages use fictional per-square-foot rates; other items use fictional project packages.
+
+Each generated line retains its low/base/high values, supporting-record count, evidence label, and calculation method. The displayed low/high values are the observed minimum and maximum among selected synthetic analogs. They are not confidence intervals. A chosen scope strategy determines which categories are included; the app never claims that the work was observed or is required at a real property.
+
+The estimate remains editable so a reviewer can test budget sensitivity. It is labeled `SYNTHETIC_SCENARIO_ONLY` and contractor review is required before any real-world use.
+
+### Data preparation and holdout evaluation
+
+The demo includes a reproducible preparation step that validates IDs and numeric fields, rejects conflicting duplicates and unknown market references, and joins fictional properties to market names and comp counts. The exact transformations and tests are documented in [synthetic data preparation and model evaluation](docs/synthetic_data_and_model_evaluation.md).
+
+The same page explains the property-level leave-one-out method and reports results for six fictional projects. On this tiny synthetic fixture, mean absolute error across tracked component costs is $911.66, and mean absolute percentage error across tracked-component sums is 15.00%. Basement-finish work is excluded because the fixture lacks basement-area quantities. **These are method-demo results only; they are not Roof4All performance, contractor-cost accuracy, or real-world validation.** Reproduce the output with:
+
+```bash
+python -m portfolio_demo.evaluation
+```
+
+### Financial and timing sensitivity
+
+The scenario calculator exposes purchase price, rent, vacancy, operating expenses, leverage, rate, term, closing costs, and reserves. It calculates gross rent, NOI, debt service, DSCR, monthly cash flow, project uses, and stabilized annualized cash-on-cash from those explicit inputs.
+
+Construction timing compares four and six weeks while holding the selected scenario constant. Repair duration rounds up to full months; rent is withheld during repair and lease-up; a separate carry assumption increases project uses. The output distinguishes first-year operating cash flow from stabilized annualized cash-on-cash.
+
+These are deterministic calculations on fictional assumptions, not a construction-duration forecast or model of actual Roof4All projects.
+
+### Reproducible tests
+
+The portfolio-demo tests check fictional-data labeling, preparation joins and data-quality failures, analog weights, property-level holdouts, project-use reconciliation, editable-scope propagation, financial recalculation, timing sensitivity, and invalid-input handling. The existing public pipeline tests cover evidence admission, source conflicts, comp de-duplication, scope overlap, abstention, and scenario isolation.
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
+For the seven-engine CLI and its Pydantic dependency, install the package in a virtual environment:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install .
+python -m pip check
+python -m unittest discover -s tests -v
 underwrite-demo
+underwrite-demo --case insufficient
+underwrite-demo --case identity-conflict --json
+python examples/run_financial_demo.py
+python examples/run_timing_sensitivity.py
 ```
 
-On Windows, activate with `.venv\Scripts\activate`.
+See the [clean-install and validation record](docs/validation.md) for the tested Python version, dependency versions, and known validation limits. GitHub Actions is configured for Python 3.11–3.13; configured CI is not proof of a hosted run.
 
-The installed command works from any directory. Equivalent entry point:
-
-```bash
-python -m property_underwriting.demo
-```
-
-Default output excerpt:
+## The seven-engine Python pipeline
 
 ```text
-ENGINE / READINESS
+Property/data trust → Condition → Renovation scope
+          │                │              │
+          └────────────────┴──────────────┤
+                                         ↓
+                              Comparable sales / ARV
+                                         ↓
+                                  Rent / HCV
+                                         ↓
+                                  Financials
+                                         ↓
+                               Decision readiness
+```
+
+The pipeline executes all seven stages on explicitly synthetic fixtures. It preserves source observations and conflict states, separates asking rent from achieved rent and HCV references, prevents duplicate comp/scope contributions, and keeps scenario values out of evidence-backed conclusions. Readiness blockers identify missing review steps; the demo does not approve an acquisition.
+
+The CLI is a software-behavior demonstration, not a trained nationwide prediction service. It does not contain the private historical contractor dataset or realized construction outcomes. Its synthetic values and tests cannot substantiate real-world property-value, rent, or renovation-cost accuracy.
+
+## Example CLI behavior
+
+```text
 1. PROPERTY_DATA      PARTIAL
 2. CONDITION          PARTIAL
 3. REHAB              PARTIAL
@@ -54,99 +121,31 @@ ENGINE / READINESS
 6. FINANCIALS         INSUFFICIENT
 7. DECISION           DUE_DILIGENCE_REQUIRED
 
-Synthetic ARV: 159965 | accepted sales: 3
-Synthetic market rent/month: 1250
-Priced rehab subset only: 2000.0
-
-SEPARATE SYNTHETIC FINANCIAL SCENARIO (does not clear blockers)
-Financial profile: SCENARIO_ONLY; sources and uses: BALANCED
-TOTAL_PROJECT_COST: 116,000.00 [SCENARIO_ONLY]
-NET_OPERATING_INCOME: 8,207.50 [SCENARIO_ONLY]
-DSCR: 1.22 [SCENARIO_ONLY]
-MONTHLY_CASH_FLOW: 124.59 [SCENARIO_ONLY]
+Scenario NOI:          $8,207.50 [SCENARIO_ONLY]
+Scenario DSCR:         1.22 [SCENARIO_ONLY]
+Monthly cash flow:       $124.59 [SCENARIO_ONLY]
+Acquisition approval:  DISABLED
 ```
 
-`READY` for valuation means this **fictional comp set** meets the engine's configured support rules. It is not a verified real-property valuation. The $2,000 rehab figure prices only the fictional paint scope; the financial scenario separately assumes a complete $35,000 rehab base plus explicit allowances. The small priced subset is never promoted into a complete budget.
+The full output is in [docs/demo_report.txt](docs/demo_report.txt). `READY` for a synthetic valuation fixture means only that the fixture passes the configured support rules; it is not a verified real-property value. The $2,000 fictional rehab subset is not treated as a complete budget.
 
-The full report lists 14 readiness blockers and orders the next actions by dependency. It deliberately does not turn profitable scenario arithmetic into an acquisition recommendation. See the [complete sample report](docs/demo_report.txt).
+## Boundaries and data provenance
 
-### See the engine refuse unsupported answers
+- All web-app properties, markets, sales, rental records, project analogs, and their dollar amounts are fictional fixtures created for the portfolio demonstration.
+- No live source, address lookup, API, provider credential, company database, historical contractor document, or property photo is used.
+- Provider adapters and private historical source data are not included.
+- Synthetic metrics are not measured market performance and are not trained predictions.
+- A provider AVM, asking rent, scenario return, or payment standard is not a verified appraisal, achieved rent, approved contract rent, or investment outcome.
+- Unknown expenses and hidden repair needs are not silently treated as zero.
+- Report output is a preliminary scenario summary, not a lender-certified Scope of Work or contractor quote.
 
-```bash
-# Remove sale/rental comps, condition evidence, quotes, and HCV reference.
-underwrite-demo --case insufficient
+## Publication and licensing status
 
-# Conflicting equally authoritative area observations block identity and values.
-underwrite-demo --case identity-conflict
+This working copy is an unpushed local candidate. The existing GitHub repository already contains the earlier public seven-engine edition. Rights to publish code derived from the private internship application have not been independently established, and the repository has no open-source license. Synthetic data does not resolve code ownership. This new website is independently authored and excludes the private logo, assets, data, policy, provider adapters, and application code, but the existing public commit still needs a rights review before any further release decision. No push or license change is part of this candidate.
 
-# Inspect all six upstream records plus Engine 7, including provenance pointers.
-underwrite-demo --json --output reports/seven_engine.json
+## Further reading
 
-# Inspect readiness without the scenario overlay.
-underwrite-demo --no-scenario
-```
-
-The insufficient case produces no ARV, market rent, or rehab estimate, and no scenario NOI/DSCR. The identity-conflict case returns `BLOCKED_PROPERTY_IDENTITY`. The original financial-only example also remains runnable:
-
-```bash
-python examples/run_financial_demo.py
-```
-
-## What is implemented
-
-| Engine | Public capability | Boundary retained |
-|---|---|---|
-| 1. Property/data trust | Typed observations, source-priority reconciliation, area-basis conflicts, missing/future/failed evidence handling | No live address/parcel resolution; fixture identity and regulatory/hazard states are explicit synthetic inputs |
-| 2. Condition | Component taxonomy, dated evidence admission, remote observability limits, conflict-aware aggregation | No images or automated vision; one fictional inspection record, with unobserved systems remaining unknown |
-| 3. Rehab | Scope grouping, inspection exposures, quantity-authority rules, contractor-evidence selection, cost overlap ledger | Only reviewed compatible scope can be priced; no private historical cost library or complete rehab inference |
-| 4. ARV/valuation | Closed-sale admission, deduplication, expanding comp tiers, similarity weights, outlier downweighting, weighted value ranges | Minimum support required; no invented dollar adjustments or calibrated accuracy claims |
-| 5. Rent/HCV | Separate asking/achieved rental cohorts, comp admission/deduplication, reference-only HCV arithmetic | No PHA lookup, schedule ingestion, utility schedule selection, or contract-rent approval |
-| 6. Financials | Evidence gates, NOI, DSCR, cash flow, cash-on-cash, sources/uses, debt, exit/refinance and scenario utilities | Missing inputs stay unavailable; synthetic pipeline outputs enter evidence mode only as references |
-| 7. Decision/readiness | Contract and identity checks, weakest-domain readiness, provenance-linked blockers, ordered next actions | Combined ARV/HCV review path; human acquisition policy disabled |
-
-The public pipeline executes all seven stages. It uses small public adapters around extracted generic algorithms instead of importing the internal application's file loaders or orchestration dependencies. The [architecture and extraction notes](docs/architecture.md) describe exactly what is reused and what is newly adapted.
-
-## Evidence is part of the output
-
-- Source IDs, original observations, effective/retrieval dates, excluded evidence, and conflict reasons remain inspectable.
-- Condition evidence cannot establish concealed-system condition from an absence of visible defects.
-- One physical sale/rental comparable contributes one weight; repeated documents do not multiply support.
-- Rehab scope cannot be charged twice through overlapping packages. Unknown work is not zero-cost work.
-- Asking rents remain asking evidence. HCV reference values never become approved owner revenue.
-- Financial inputs retain units, evidence classes, acceptance, and scope coverage. Scenario values stay `SCENARIO_ONLY`.
-- Decision blockers point to upstream JSON fields and semantic SHA-256 hashes. These hashes detect changed content; they do not authenticate a source or prove its truth.
-
-Fixtures use an explicitly invalid state (`ZZ`), county sentinel (`00000`), labels saying “NOT AN ADDRESS,” and artificial coordinates around the equator. No example represents a real parcel. Authority/inspection labels inside the fixture describe **simulated roles**. The public integration rejects `synthetic=false`, and every exported engine record carries `synthetic=true`.
-
-## Public versus internal scope and geographic coverage
-
-This edition contains the reusable offline computational portions of a broader internal system. It excludes private data, internal archives, provider implementations/credentials, client-specific adapters, historical renovation datasets, and property media. No internal test totals or internal production-readiness claims apply here.
-
-**Real-address ingestion is not exposed in this edition.** The source application's address work was concentrated in Kansas City, Missouri / Jackson County. That is background scope, not a public support promise: no current source availability, zoning clearance, or city-case completeness is established by this repository. Arbitrary US addresses are unsupported.
-
-Adding a connector requires independent source/usage review, geography-specific routing, explicit identity resolution, failure/staleness handling, and tests using publishable fixtures. Copying source labels into a JSON file does not make them authoritative evidence.
-
-## Tests and reproducibility
-
-```bash
-python -m unittest discover -s tests -v
-python -m pip check
-```
-
-The public suite tests the seven-engine flow, deterministic output, no-network execution, identity/contract drift, missing/future evidence, condition conflicts, rehab overlap, comparable deduplication, asking-versus-achieved rent, HCV reference separation, and scenario isolation. The original three financial regressions remain included. Tests are independently constructed with fictional data; they are not a claim about a larger private suite.
-
-The CLI's fixtures are included in the installed wheel. Its fixed analysis date is **2026-01-15**, so results do not silently change as the clock advances. [Validation results](docs/validation.md) record the clean-install run and dependency versions. CI is configured to run the public tests and demos on Python 3.11–3.13; configured CI is not a claim that a hosted run has already passed.
-
-## Limitations
-
-- This is a developer-facing portfolio/research edition, not consumer-ready underwriting software.
-- Similarity weights, thresholds, and confidence labels are explicit engineering policy, not statistically calibrated prediction intervals.
-- The integrated condition review is intentionally sparse. No computer-vision performance or comprehensive physical inspection is demonstrated.
-- Valuation and rent model a hypothetical ordinary rental-ready target; they do not certify that repairs occurred or that hidden systems work.
-- The retained readiness policy requires ARV and HCV evidence together. Strategy-specific exemptions are not implemented.
-- Evidence-mode financials in this synthetic integration stay insufficient. Numerical scenario success cannot verify real evidence.
-- The reusable low-level modules assume their input contracts; the demo is not a hardened public API for arbitrary untrusted data.
-
-## Reuse and licensing
-
-No open-source license has been selected yet. The repository is prepared as a public portfolio edition, but broad reuse rights should not be assumed until the code owner approves a license. Third-party packages retain their own licenses. No proprietary data or provider response samples are distributed.
+- [Architecture and extraction notes](docs/architecture.md)
+- [Synthetic timing sensitivity output and formulas](docs/timing_sensitivity_report.txt)
+- [Validation results and clean-install record](docs/validation.md)
+- [Seven-engine sample report](docs/demo_report.txt)
