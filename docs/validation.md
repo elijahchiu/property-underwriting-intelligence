@@ -58,7 +58,7 @@ The portfolio website uses only fictional examples. Its similarity-weighted scop
 
 The separate construction-timing example compares four and six weeks under explicit fictional no-rent and carry assumptions. Its six-week case rounds to two repair-carry months. The stabilized annual cash flow remains $1,495.04 in both cases, while first-year operating cash flow changes from -$1,556.21 to -$3,081.84. Additional project uses rise by $350.00. See [the exact sample output and formulas](timing_sensitivity_report.txt).
 
-The candidate remains local and unpublished pending the user's review and approval to push. The user confirms company permission for the portfolio publication version. The remote branch head could not be checked from this environment because GitHub DNS was unavailable; see [the local release checklist](release_readiness.md).
+The website and pipeline were published on GitHub `main` in commit [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235), verified in the repository browser on 2026-10-15. The website remains a loopback-only local demo; GitHub does not host this Python-backed app. No license was added. The 55-test and browser results above are local validation results; they are not a claim that GitHub-hosted CI ran them.
 
 ## Reproduce
 

@@ -141,7 +141,7 @@ The full output is in [docs/demo_report.txt](docs/demo_report.txt). `READY` for 
 
 ## Publication and licensing status
 
-This working copy is an unpushed local candidate. The existing GitHub repository already contains the earlier public seven-engine edition. Rights to publish code derived from the private internship application have not been independently established, and the repository has no open-source license. Synthetic data does not resolve code ownership. This new website is independently authored and excludes the private logo, assets, data, policy, provider adapters, and application code, but the existing public commit still needs a rights review before any further release decision. No push or license change is part of this candidate.
+The interactive demo and seven-engine pipeline are published on the repository's `main` branch in commit [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235). The website is source code in this repository, not a hosted public service: run the command above locally to use it. The demo is independently authored and excludes the private Roof4All logo, assets, data, policy, provider adapters, and application code. No open-source license is included, so reuse remains subject to the repository owner's permission and any applicable company rights.
 
 ## Further reading
 
