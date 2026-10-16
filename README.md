@@ -1,79 +1,62 @@
 # Property Underwriting Intelligence
 
-**An interactive property-research portfolio demo, with a reproducible Python underwriting pipeline.**
+An interactive real-estate research demo and a reproducible Python underwriting pipeline.
 
-Real-estate screening combines incomplete property facts, renovation needs, comparable sales, rent assumptions, and financing terms. This project demonstrates one way to keep those inputs traceable, compare scenarios, and make unsupported conclusions visible.
+The demo follows a sample property from market research through renovation scope, financing scenarios, and a printable report. The Python pipeline shows how property evidence moves through seven underwriting steps.
 
-The public edition now has two connected demonstrations:
+> **Demo only:** All properties, markets, sales, rents, renovation costs, and outcomes are fictional. This is not the private Roof4All application, a live address lookup, an appraisal, or investment advice.
 
-- A local website for fictional market research, sample-property discovery, comp review, editable renovation scopes, financial scenarios, construction-timing comparison, and a print-ready acquisition report.
-- A Python seven-engine pipeline showing structured evidence handling, scope coverage, sales/rental analysis, financial calculations, and decision readiness.
+## Run the website
 
-Everything in the public demo is simulated. It is not the private Roof4All application, a live address lookup service, an appraisal, or an investment recommendation.
-
-## Try the website
-
-Requires Python 3.11 or newer. The interactive portfolio app uses only the Python standard library and makes no external requests.
+Requires Python 3.11 or newer. The website uses the Python standard library and makes no external requests.
 
 ```bash
 python3 -m portfolio_demo.server --port 8790
 ```
 
-Open [http://127.0.0.1:8790](http://127.0.0.1:8790). Stop it with `Ctrl-C`.
+Then open [http://127.0.0.1:8790](http://127.0.0.1:8790). The app runs on your computer; this repository does not host a public website. Press `Ctrl-C` in the terminal to stop it.
 
-The demo flow is:
+Try this path:
 
-1. Compare fictional markets and browse fictional listings.
-2. Open a property workspace with made-up facts, comparable sales, and asking-rent examples.
-3. Generate a preliminary itemized scope, inspect its synthetic analog counts, and edit budget amounts.
-4. Change financing and operating assumptions to recalculate NOI, DSCR, monthly cash flow, and cash-on-cash.
-5. Compare four- and six-week construction scenarios, then print the report or save it as PDF from the browser.
-
-The interface was authored for this public demo. It uses a familiar research-to-underwriting workflow without private logos, images, company policy, or internal application code.
+1. Compare the fictional markets and browse sample listings.
+2. Open a property workspace to review sample facts, sales, and asking rents.
+3. Choose a renovation strategy, review the itemized estimate, and edit its amounts.
+4. Change financing and operating assumptions to see NOI, DSCR, cash flow, and cash-on-cash update.
+5. Compare four- and six-week construction scenarios, then print or save the report as a PDF.
 
 ![Property research dashboard with fictional neighborhood comparisons and sample listings](docs/portfolio_overview.png)
 
 ![Editable financial assumptions, modeled outcomes, and reconciled project uses](docs/portfolio_financials.png)
 
-[Open the two-page sample acquisition report (fictional data)](docs/portfolio_report_sample.pdf)
+[View the two-page sample acquisition report](docs/portfolio_report_sample.pdf) (fictional data).
 
-## What the analytical example demonstrates
+## How the renovation estimate works
 
-### Renovation estimate from case-based analogs
+The estimate uses six fictional project records. It ranks them by market (30%), property type (15%), construction era (15%), living area (25%), and basement presence (15%). For each selected work category, the app uses a similarity-weighted average of the five closest records. Flooring, paint, and basement-finish work use fictional per-square-foot rates; other items use package prices from the sample records.
 
-The website's independent Python estimator uses **six fictional project records**. It ranks examples using explicit feature weights—market 30%, property type 15%, construction era 15%, living area 25%, and basement 15%—then estimates each selected work package with a similarity-weighted mean. Flooring, paint, and basement-finish packages use fictional per-square-foot rates; other items use fictional project packages.
+Each line shows its estimate, supporting sample count, method, and observed range. The low and high are the smallest and largest values among the selected examples; they are not confidence bounds. The selected strategy controls which work packages appear. The estimate is editable and labeled `SYNTHETIC_SCENARIO_ONLY`; it is not an inspection, quote, paid cost, or recommendation for a real property.
 
-Each generated line retains its low/base/high values, supporting-record count, evidence label, and calculation method. The displayed low/high values are the observed minimum and maximum among selected synthetic analogs. They are not confidence intervals. A chosen scope strategy determines which categories are included; the app never claims that the work was observed or is required at a real property.
+### Small synthetic holdout exercise
 
-The estimate remains editable so a reviewer can test budget sensitivity. It is labeled `SYNTHETIC_SCENARIO_ONLY` and contractor review is required before any real-world use.
-
-### Data preparation and holdout evaluation
-
-The demo includes a reproducible preparation step that validates IDs and numeric fields, rejects conflicting duplicates and unknown market references, and joins fictional properties to market names and comp counts. The exact transformations and tests are documented in [synthetic data preparation and model evaluation](docs/synthetic_data_and_model_evaluation.md).
-
-The same page explains the property-level leave-one-out method and reports results for six fictional projects. On this tiny synthetic fixture, mean absolute error across tracked component costs is $911.66, and mean absolute percentage error across tracked-component sums is 15.00%. Basement-finish work is excluded because the fixture lacks basement-area quantities. **These are method-demo results only; they are not Roof4All performance, contractor-cost accuracy, or real-world validation.** Reproduce the output with:
+Run the reproducible evaluation:
 
 ```bash
 python -m portfolio_demo.evaluation
 ```
 
-### Financial and timing sensitivity
+The evaluator holds out each of the six fictional projects in turn and predicts its recorded work categories from the other five. In this small fixture, it compares 53 component costs and reports $911.66 mean absolute error across those components and 15.00% mean absolute percentage error on tracked-component sums. Basement-finish costs are excluded because the fixture has no basement-area quantities.
 
-The scenario calculator exposes purchase price, rent, vacancy, operating expenses, leverage, rate, term, closing costs, and reserves. It calculates gross rent, NOI, debt service, DSCR, monthly cash flow, project uses, and stabilized annualized cash-on-cash from those explicit inputs.
+These results describe only six invented examples. They do not measure Roof4All performance, contractor-cost accuracy, or real-world renovation-cost accuracy. See [the method and full results](docs/synthetic_data_and_model_evaluation.md).
 
-Construction timing compares four and six weeks while holding the selected scenario constant. Repair duration rounds up to full months; rent is withheld during repair and lease-up; a separate carry assumption increases project uses. The output distinguishes first-year operating cash flow from stabilized annualized cash-on-cash.
+## Financial and timing scenarios
 
-These are deterministic calculations on fictional assumptions, not a construction-duration forecast or model of actual Roof4All projects.
+The calculator uses the values entered in the demo to show rent, vacancy, expenses, leverage, interest rate, term, closing costs, and reserves flowing into NOI, debt service, DSCR, cash flow, and project uses. The timing comparison holds the selected scenario constant, with rent paused during repair and lease-up and a separate carry cost applied. These are calculations on fictional assumptions, not rent forecasts or construction-duration predictions.
 
-### Reproducible tests
+## Run the Python pipeline
 
-The portfolio-demo tests check fictional-data labeling, preparation joins and data-quality failures, analog weights, property-level holdouts, project-use reconciliation, editable-scope propagation, financial recalculation, timing sensitivity, and invalid-input handling. The existing public pipeline tests cover evidence admission, source conflicts, comp de-duplication, scope overlap, abstention, and scenario isolation.
+The pipeline runs seven stages: property-data review, condition, renovation scope, comparable sales/value, rent/HCV, financials, and decision readiness. It keeps missing evidence visible, separates asking rent from achieved rent, prevents duplicate comparable and scope contributions, and leaves scenario assumptions separate from evidence-based outputs.
 
-```bash
-python3 -m unittest discover -s tests -v
-```
-
-For the seven-engine CLI and its Pydantic dependency, install the package in a virtual environment:
+Install the package and run its examples:
 
 ```bash
 python3 -m venv .venv
@@ -88,64 +71,24 @@ python examples/run_financial_demo.py
 python examples/run_timing_sensitivity.py
 ```
 
-See the [clean-install and validation record](docs/validation.md) for the tested Python version, dependency versions, and known validation limits. GitHub Actions is configured for Python 3.11–3.13; configured CI is not proof of a hosted run.
+The pipeline uses fictional fixtures. It is not a trained nationwide prediction service and does not include Roof4All's private historical contractor records or realized construction outcomes. A `READY` result means only that a synthetic fixture passed the configured checks; it is not a verified property valuation or acquisition approval. See the [sample report](docs/demo_report.txt) and [validation record](docs/validation.md).
 
-## The seven-engine Python pipeline
+## Data and licensing
 
-```text
-Property/data trust → Condition → Renovation scope
-          │                │              │
-          └────────────────┴──────────────┤
-                                         ↓
-                              Comparable sales / ARV
-                                         ↓
-                                  Rent / HCV
-                                         ↓
-                                  Financials
-                                         ↓
-                               Decision readiness
-```
+- The website and pipeline use fictional example data; no live sources, APIs, provider credentials, company files, or property photos are included.
+- The synthetic figures are not measured market performance or validated real-world predictions.
+- Asking rent, HCV references, provider AVMs, and scenario returns are not achieved rent, approved contract rent, verified appraisals, or investment outcomes.
+- Unknown expenses and concealed repair needs remain unknown; they are not treated as zero.
+- The report is a planning example, not a lender-certified Scope of Work or contractor quote.
+- The public repository has no open-source license. Ask the repository owner before reusing its code; company rights may also apply.
 
-The pipeline executes all seven stages on explicitly synthetic fixtures. It preserves source observations and conflict states, separates asking rent from achieved rent and HCV references, prevents duplicate comp/scope contributions, and keeps scenario values out of evidence-backed conclusions. Readiness blockers identify missing review steps; the demo does not approve an acquisition.
+## Project notes
 
-The CLI is a software-behavior demonstration, not a trained nationwide prediction service. It does not contain the private historical contractor dataset or realized construction outcomes. Its synthetic values and tests cannot substantiate real-world property-value, rent, or renovation-cost accuracy.
+- [Architecture](docs/architecture.md)
+- [Synthetic data and holdout results](docs/synthetic_data_and_model_evaluation.md)
+- [Construction timing example](docs/timing_sensitivity_report.txt)
+- [Validation record](docs/validation.md)
+- [Feature comparison and release boundaries](docs/public_portfolio_feature_comparison.md)
+- [Release record](docs/release_readiness.md)
 
-## Example CLI behavior
-
-```text
-1. PROPERTY_DATA      PARTIAL
-2. CONDITION          PARTIAL
-3. REHAB              PARTIAL
-4. VALUATION          READY
-5. RENT_HCV           PARTIAL
-6. FINANCIALS         INSUFFICIENT
-7. DECISION           DUE_DILIGENCE_REQUIRED
-
-Scenario NOI:          $8,207.50 [SCENARIO_ONLY]
-Scenario DSCR:         1.22 [SCENARIO_ONLY]
-Monthly cash flow:       $124.59 [SCENARIO_ONLY]
-Acquisition approval:  DISABLED
-```
-
-The full output is in [docs/demo_report.txt](docs/demo_report.txt). `READY` for a synthetic valuation fixture means only that the fixture passes the configured support rules; it is not a verified real-property value. The $2,000 fictional rehab subset is not treated as a complete budget.
-
-## Boundaries and data provenance
-
-- All web-app properties, markets, sales, rental records, project analogs, and their dollar amounts are fictional fixtures created for the portfolio demonstration.
-- No live source, address lookup, API, provider credential, company database, historical contractor document, or property photo is used.
-- Provider adapters and private historical source data are not included.
-- Synthetic metrics are not measured market performance and are not trained predictions.
-- A provider AVM, asking rent, scenario return, or payment standard is not a verified appraisal, achieved rent, approved contract rent, or investment outcome.
-- Unknown expenses and hidden repair needs are not silently treated as zero.
-- Report output is a preliminary scenario summary, not a lender-certified Scope of Work or contractor quote.
-
-## Publication and licensing status
-
-The interactive demo and seven-engine pipeline are published on the repository's `main` branch in commit [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235). The website is source code in this repository, not a hosted public service: run the command above locally to use it. The demo is independently authored and excludes the private Roof4All logo, assets, data, policy, provider adapters, and application code. No open-source license is included, so reuse remains subject to the repository owner's permission and any applicable company rights.
-
-## Further reading
-
-- [Architecture and extraction notes](docs/architecture.md)
-- [Synthetic timing sensitivity output and formulas](docs/timing_sensitivity_report.txt)
-- [Validation results and clean-install record](docs/validation.md)
-- [Seven-engine sample report](docs/demo_report.txt)
+The interactive demo and pipeline are published in commit [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235). The website runs locally; it does not have a public hosted URL.

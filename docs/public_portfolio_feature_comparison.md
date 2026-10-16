@@ -1,25 +1,23 @@
-# Public portfolio feature comparison
+# Public demo and private application
 
-This comparison was prepared from the private application's operational README and UI/navigation source and a read-only inspection of its current local Scope workspace at `127.0.0.1:8783`, then checked against the published repository at commit `599d352`. The private project was not changed. No private datasets, application modules, branding assets, or provider code were copied into the public demo. The public screenshots in `docs/` show the demo; private application views are not packaged with this portfolio because they display private property and provider-budget information.
+This summary compares the public portfolio demo with the private Roof4All application. I reviewed the private app's documentation and navigation read-only. No private files, data, logo, provider code, or application code were copied into the public demo.
 
-| Capability | Private Roof4All application | Published public GitHub edition (`main`, `599d352`) |
+| Area | Private Roof4All app | Public portfolio demo |
 |---|---|---|
-| Market and neighborhood research | Integrated local and public-source workflow; coverage varies by geography | Three fabricated markets with comparison cards, indicators, and a small visual |
-| Property discovery | Address intake plus supported listing/property search | Search and filter five fictional listings |
-| Property workspace | Evidence-aware facts, local records, condition, sales, rent, scope, and underwriting sections | Browser workspace with fictional facts, source labels, sale comps, and asking-rent examples; seven-engine Python pipeline available separately |
-| Sale and rent analysis | Evidence-admission and comparable review; live provider is optional and guarded | Three synthetic sales and rental observations per property; median references are shown as simulated |
-| Renovation scope | Historical scope corpus, user review, manual inputs, and contractor-review status | Editable itemized scope generated from six synthetic reference projects with disclosed feature weights |
-| Data preparation / evaluation | Private source normalization and historical-estimate workflows | Fictional record validation/integration plus six-record leave-one-project-out method demo; not Roof4All performance |
-| Financial underwriting | Integrated evidence and scenario engines; missing evidence can withhold metrics | Browser form for purchase, rent, vacancy, operating costs, debt, NOI, DSCR, cash flow, and cash-on-cash |
-| Scenario comparison | Saved versions and property-specific comparisons | Live recalculation of assumptions plus four/six-week timing sensitivity |
-| Acquisition report | Browser report and print-to-PDF flow with evidence and blockers | Print-ready report preview with property, comps, scope, financials, timing, and review items |
-| Live data/provider integrations | Local/public connectors and separately guarded optional provider calls | Absent; the app makes no external requests |
-| Historical/company records | Private evidence and source-document corpus | Excluded; all visible fixtures are invented |
+| Market research | Local and public-source research; coverage varies by market | Three fictional markets with comparison cards and charts |
+| Property search | Address intake and supported property/listing search | Five fictional listings with search and filters |
+| Property workspace | Property facts, local records, condition, sales, rent, renovation, underwriting | Fictional property facts, sale comps, and asking-rent examples; separate seven-engine Python pipeline |
+| Sales and rent | Evidence review and comparable analysis; guarded provider calls may be available | Three fictional sales and rental records per sample property |
+| Renovation | Historical scopes, property-specific review, and contractor follow-up | Editable estimates from six fictional projects; methods and limitations are shown |
+| Data evaluation | Private source and historical-estimate workflows | Synthetic record checks and a six-project holdout exercise; not Roof4All model performance |
+| Financials | Evidence and scenario engines that can withhold unsupported results | Editable fictional assumptions for NOI, DSCR, cash flow, and cash-on-cash |
+| Scenarios | Saved property comparisons | Recalculated financing assumptions and four-/six-week timing examples |
+| Report | Property evidence, scope, and readiness review | Printable sample report with comps, scope, financials, timing, and review items |
+| Live data | Local/public sources and separately guarded providers | None; the demo makes no external requests |
+| Company records | Historical and current internal evidence | None; all example records are fictional |
 
-## Release boundaries
+## What the public demo is
 
-The interactive website is a separately authored public demonstration of the same high-level research sequence. It does not claim feature parity with the private system, use its logo or visual assets, or reuse its internal application code. All values are synthetic.
+The public site shows a similar research sequence, but it is a separate portfolio project—not a copy of the Roof4All application. It uses no Roof4All logo, private data, or internal code. The demo and Python pipeline are in GitHub `main` at commit [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235).
 
-The published public edition contains both the interactive synthetic website and the seven-engine Python pipeline. The website is locally run and loopback-only; it is not hosted as a public service. The repository has no open-source license, and no license was added as part of the publication.
-
-The app is a local portfolio demonstration, not a hosted service. It binds to loopback only and has no user accounts, saved server-side cases, live feeds, or real-world property resolution.
+The site runs locally and listens only on the local computer. It is not a hosted service and has no account system, live data, or real address lookup. The repository has no open-source license.

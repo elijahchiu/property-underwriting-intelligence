@@ -1,10 +1,10 @@
 # Public edition validation
 
-Validated locally on Python 3.12.7 / macOS arm64 using a second fresh virtual environment and a clean export of the applied public files. The export contained no Git history, private repository files, previous virtual environment, caches, bytecode or build output.
+All checks below were run locally. The first check covered the seven-engine package; the later check covered the package and interactive website. GitHub Actions is configured for Python 3.11–3.13, but this record does not claim a hosted CI run.
 
-The package was installed normally (not editable). Tests ran from a separate directory containing only the public test files; the CLI ran outside the source tree. Imports resolved to the installed `site-packages` package. This verifies independence from the source checkout and private application.
+For the initial package check, I built and installed a wheel in a fresh Python 3.12.7 environment on macOS arm64. Tests ran outside the source tree, and imports came from the installed package.
 
-## Results
+## Initial seven-engine package check
 
 - Installation: succeeded; built and installed `property-underwriting-intelligence 0.2.0`.
 - Public tests: **38 tests passed** (`Ran 38 tests in 0.630s`, `OK`). Includes the original 3 financial tests and 35 new pipeline/evidence tests.
@@ -37,9 +37,9 @@ typing_extensions==4.16.0
 
 These are the versions actually tested, not a promise that all future compatible dependency releases produce identical behavior. Runtime requirements remain declared in `pyproject.toml`.
 
-## Local portfolio edition validation (2026-10-15)
+## Interactive portfolio edition check (2026-10-15)
 
-The final candidate was installed as a built, non-editable wheel in a newly created Python 3.12 virtual environment. The environment used the desktop's preinstalled dependency set (`setuptools 84.0.0`, `pydantic 2.13.5`) through shared site packages; no package-index access was needed. The app and core pipeline imports resolved to that environment's `site-packages`, not the checkout. The interactive app was launched from the installed package in a separate directory and opened in a browser on loopback.
+I built and installed a wheel in a fresh Python 3.12 environment using locally available dependencies; no package-index access was needed. I launched the installed website outside the source checkout and opened it in a browser on loopback.
 
 - Final package build/install: succeeded as `property-underwriting-intelligence 0.2.0`; installed wheel SHA-256 `1e92cb71a79c5ff1f4cbb37975fba839ba1616cf136f2d2a4e4deb89a014bba5`.
 - Dependency check: `No broken requirements found.`
@@ -58,7 +58,7 @@ The portfolio website uses only fictional examples. Its similarity-weighted scop
 
 The separate construction-timing example compares four and six weeks under explicit fictional no-rent and carry assumptions. Its six-week case rounds to two repair-carry months. The stabilized annual cash flow remains $1,495.04 in both cases, while first-year operating cash flow changes from -$1,556.21 to -$3,081.84. Additional project uses rise by $350.00. See [the exact sample output and formulas](timing_sensitivity_report.txt).
 
-The website and pipeline were published on GitHub `main` in commit [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235), verified in the repository browser on 2026-10-15. The website remains a loopback-only local demo; GitHub does not host this Python-backed app. No license was added. The 55-test and browser results above are local validation results; they are not a claim that GitHub-hosted CI ran them.
+The website and pipeline were published on GitHub `main` in commit [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235), verified in the repository browser on 2026-10-15. The site is a local demo; GitHub does not host this Python app. No license was added. The test and browser results above are local checks, not GitHub Actions results.
 
 ## Reproduce
 
