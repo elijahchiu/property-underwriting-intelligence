@@ -1,6 +1,6 @@
 # Public demo and private application
 
-This summary compares the public portfolio demo with the private Roof4All application. I reviewed the private app's documentation and navigation read-only. No private files, data, logo, provider code, or application code were copied into the public demo.
+This summary compares the public portfolio demo with the private Roof4All application. Some analysis code was adapted from the internal application; [the architecture notes](architecture.md) list the modules and changes. No private data, property files, branding, provider integrations, credentials, or application interface were copied into the public demo.
 
 | Area | Private Roof4All app | Public portfolio demo |
 |---|---|---|
@@ -18,6 +18,6 @@ This summary compares the public portfolio demo with the private Roof4All applic
 
 ## What the public demo is
 
-The public site follows a similar research sequence, but it is a separate portfolio project, not a copy of the Roof4All application. It uses no Roof4All logo, private data, or internal code. The demo and Python pipeline are published on GitHub `main`.
+The public site follows a similar research sequence, but it is a separate portfolio project, not a copy of the Roof4All application. It includes some adapted analysis code, listed in the architecture notes, but no Roof4All branding, private data, provider integrations, or private application interface. The demo and Python pipeline are published on GitHub `main`.
 
 The site runs locally and listens only on the local computer. It is not a hosted service and has no account system, live data, or real address lookup. The repository has no open-source license.
