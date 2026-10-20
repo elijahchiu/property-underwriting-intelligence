@@ -18,6 +18,6 @@ This summary compares the public portfolio demo with the private Roof4All applic
 
 ## What the public demo is
 
-The public site shows a similar research sequence, but it is a separate portfolio project—not a copy of the Roof4All application. It uses no Roof4All logo, private data, or internal code. The demo and Python pipeline are in GitHub `main` at commit [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235).
+The public site follows a similar research sequence, but it is a separate portfolio project, not a copy of the Roof4All application. It uses no Roof4All logo, private data, or internal code. The demo and Python pipeline are published on GitHub `main`.
 
 The site runs locally and listens only on the local computer. It is not a hosted service and has no account system, live data, or real address lookup. The repository has no open-source license.

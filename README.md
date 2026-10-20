@@ -91,4 +91,4 @@ The pipeline uses fictional fixtures. It is not a trained nationwide prediction 
 - [Feature comparison and release boundaries](docs/public_portfolio_feature_comparison.md)
 - [Release record](docs/release_readiness.md)
 
-The interactive demo and pipeline are published in commit [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235). The website runs locally; it does not have a public hosted URL.
+The interactive demo and pipeline are published on GitHub `main`. The website runs locally; it does not have a public hosted URL.

@@ -1,7 +1,6 @@
 # Public portfolio release status
 
-**Checked:** 2026-10-15
-**Published app commit:** [`599d352`](https://github.com/elijahchiu/property-underwriting-intelligence/commit/599d352f282c129fc92aa004f1cfa4b3c5246235)
+**Checked:** 2026-10-19
 
 ## Included
 
@@ -16,7 +15,7 @@
 - Exercised the website's market, property, renovation, financial, timing, and report pages in a browser; no console errors appeared.
 - Checked the layout at 390 × 844 and reviewed the two-page sample PDF. These were spot checks, not a full accessibility audit.
 - Scanned the published files for credentials and private Roof4All records. The app and tests made no live property-data or paid-provider requests.
-- Verified that commit `599d352` and the `portfolio_demo/` files are on GitHub `main`.
+- Verified that the interactive demo and pipeline are on GitHub `main`.
 
 ## Limits
 
